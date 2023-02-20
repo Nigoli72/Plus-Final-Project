@@ -6,9 +6,11 @@ h1 {
   text-align: center;
 }
 h2 {
-  font-size: 26px;
+  font-size: 48px;
+  margin-top: 0px;
 }
-ul {
+h3 {
+  text-align: center;
 }
 h5 {
   text-align: center;
@@ -17,4 +19,27 @@ h5 {
   margin: 0 auto;
   border: 1px solid black;
   border-radius: 15px;
+}
+.currentTemp {
+  font-size: 48px;
+  font-weight: bold;
+  padding: 0px;
+  margin-left: 75px;
+}
+.currentCity {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.currentTemp {
+  font-size: 48;
+  margin-top: 50px;
+  text-decoration: none;
+}
+.currentImage {
+  font-size: 25px;
+  margin-right: 75px;
+  margin-top: 70px;
+  padding: 0px;
 }
