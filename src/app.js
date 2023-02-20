@@ -20,6 +20,7 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+
 function displayWeather(response) {
   let temperatureElement = document.querySelector("#currentTemperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
@@ -31,6 +32,8 @@ function displayWeather(response) {
   humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
   let windElement = document.querySelector("#windSpeed");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector("#time");
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
 
 let apiKey = "74ft7426o38737ab0c3021aae5a380df";
