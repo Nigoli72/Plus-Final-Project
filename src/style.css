@@ -1,0 +1,20 @@
+body {
+  max-width: 600px;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  font-size: 26px;
+}
+ul {
+}
+h5 {
+  text-align: center;
+}
+.outlineBorder {
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 15px;
+}
