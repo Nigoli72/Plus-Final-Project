@@ -30,7 +30,13 @@ ul {
   font-size: 48px;
   font-weight: bold;
   padding: 0px;
-  margin-left: 75px;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+.weatherIcon {
+  padding: 0px;
+  margin-left: -18px;
+  margin-top: 10px;
 }
 .currentCity {
   font-size: 48px;
@@ -38,10 +44,6 @@ ul {
   text-align: center;
 }
 
-.currentTemp {
-  font-size: 48;
-  margin-top: 50px;
-}
 .currentImage {
   text-transform: capitalize;
   font-size: 15px;
