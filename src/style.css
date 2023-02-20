@@ -15,6 +15,12 @@ h3 {
 h5 {
   text-align: center;
 }
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
 .outlineBorder {
   margin: 0 auto;
   border: 1px solid black;
@@ -35,11 +41,13 @@ h5 {
 .currentTemp {
   font-size: 48;
   margin-top: 50px;
-  text-decoration: none;
 }
 .currentImage {
-  font-size: 25px;
-  margin-right: 75px;
-  margin-top: 70px;
+  text-transform: capitalize;
+  font-size: 15px;
+  font-weight: bolder;
+
+  margin-right: 50px;
+  margin-top: 50px;
   padding: 0px;
 }
