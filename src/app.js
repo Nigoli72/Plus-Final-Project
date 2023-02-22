@@ -57,7 +57,13 @@ function searchCity(city) {
   let newUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(newUrl).then(displayWeather);
 }
+function returnCity(event) {
+  navigator.geolocation.getCurrentPosition(logPosition);
+}
 let search = document.querySelector("form");
 search.addEventListener("submit", searching);
+
+let cityReturn = document.querySelector("button");
+cityReturn.addEventListener("click", returnCity);
 
 navigator.geolocation.getCurrentPosition(logPosition);
