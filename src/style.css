@@ -1,7 +1,7 @@
 body {
   max-width: 600px;
   margin: 0 auto;
-  background-color: #d5def5;
+  background-color: rgb(155, 254, 221);
 }
 h1 {
   text-align: center;
@@ -23,10 +23,10 @@ ul {
   list-style-type: none;
 }
 form {
-  max-width: 150px;
-  margin: 0 auto;
-  margin-top: 60px;
+  display: block;
+  text-align: center;
 }
+
 .outlineBorder {
   margin: 0 auto;
   border: 1px solid black;

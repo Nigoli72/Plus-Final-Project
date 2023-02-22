@@ -5,9 +5,10 @@ function formatDate(timestamp) {
     hours = "0"`${hours}`;
   }
   let minutes = date.getMinutes();
-  if (minutes < 10) {
+  if (hours < 10) {
     minutes = "0"`${minutes}`;
   }
+
   let days = [
     "Sunday",
     "Monday",
@@ -18,9 +19,16 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
+
   return `${day} ${hours}:${minutes}`;
 }
-
+function logPosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "74ft7426o38737ab0c3021aae5a380df";
+  let url = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
+  axios.get(url).then(displayWeather);
+}
 function displayWeather(response) {
   console.log(response);
   let temperatureElement = document.querySelector("#currentTemperature");
@@ -36,12 +44,20 @@ function displayWeather(response) {
   let dateElement = document.querySelector("#time");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   let iconElement = document.querySelector("#image");
-  iconElement.setAttribute(
-    "src",
-    "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png"
-  );
+  let iconUrl = response.data.condition.icon_url;
+  iconElement.setAttribute("src", iconUrl);
 }
+function searching(event) {
+  event.preventDefault();
+  let city = document.querySelector(".city");
+  searchCity(city.value);
+}
+function searchCity(city) {
+  let apiKey = "74ft7426o38737ab0c3021aae5a380df";
+  let newUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(newUrl).then(displayWeather);
+}
+let search = document.querySelector("form");
+search.addEventListener("submit", searching);
 
-let apiKey = "74ft7426o38737ab0c3021aae5a380df";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=38.71667&lon=-9.13333&key=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayWeather);
+navigator.geolocation.getCurrentPosition(logPosition);

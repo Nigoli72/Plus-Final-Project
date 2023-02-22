@@ -24,6 +24,17 @@
     <div class="container">
       <div class="outlineBorder">
         <div class="row">
+          <form id="citySearch">
+            <input
+              type="search"
+              placeholder="Enter a city"
+              class="city"
+              id="cityName"
+              autocomplete="off"
+            />
+          </form>
+        </div>
+        <div class="row">
           <div class="col-2 currentTemp" id="temp">
             <a href="#" id="currentTemperature"></a>
             <div class="weatherIcon">
@@ -33,21 +44,11 @@
 
           <div class="col currentCity" id="currentCity">
             <h2></h2>
-
             <br />
-            <form id="citySearch">
-                <input type="search"
-                placeholder="Enter a city"
-                class="form-control"
-                id="cityName"
-                autocomplete="off">
-               
-            </form>
           </div>
           <div class="col-2 currentImage" id="weatherconditions">
             <ul>
-              <li>
-                Conditions: <span id="conditions"></li>
+              <li>Conditions: <span id="conditions"> </span></li>
               <br />
               <li>Humidity: <span id="humidity"></span> %</li>
               <br />
