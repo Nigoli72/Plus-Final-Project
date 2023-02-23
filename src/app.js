@@ -60,6 +60,12 @@ function searchCity(city) {
 function returnCity(event) {
   navigator.geolocation.getCurrentPosition(logPosition);
 }
+function displayF(event) {
+  event.prevent.Default();
+  let fTemp = (cTemp * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#currentTemperature");
+  temperatureElement.innerHTML = fTemp;
+}
 let search = document.querySelector("form");
 search.addEventListener("submit", searching);
 
@@ -67,3 +73,7 @@ let cityReturn = document.querySelector("button");
 cityReturn.addEventListener("click", returnCity);
 
 navigator.geolocation.getCurrentPosition(logPosition);
+
+let fLink = document.querySelector("#fTemperature");
+fLink.addEventListener("click", displayF);
+let cTemp = response.data.temperature.current;

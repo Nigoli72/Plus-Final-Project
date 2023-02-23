@@ -36,8 +36,13 @@
           <span><button>Current city</button></span>
         </div>
         <div class="row">
-          <div class="col-2 currentTemp" id="temp">
-            <a href="#" id="currentTemperature"></a>
+          <div class="col-3 currentTemp" id="temp">
+            <strong id="currentTemperature"></strong>
+            <span class="units">
+              <a href="#" id="cTemperature">°C |</a
+              ><a href="#" id="fTemperature">°F</a>
+            </span>
+
             <div class="weatherIcon">
               <img id="image" src="" />
             </div>
@@ -47,7 +52,7 @@
             <h2></h2>
             <br />
           </div>
-          <div class="col-2 currentImage" id="weatherconditions">
+          <div class="col-3 currentImage" id="weatherconditions">
             <ul>
               <li>Conditions: <span id="conditions"> </span></li>
               <br />
