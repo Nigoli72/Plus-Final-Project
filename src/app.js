@@ -30,21 +30,21 @@ function logPosition(position) {
   axios.get(url).then(displayWeather);
 }
 function displayWeather(response) {
-  console.log(response);
   let temperatureElement = document.querySelector("#currentTemperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   let cityElement = document.querySelector("#currentCity");
-  cityElement.innerHTML = response.data.city;
   let description = document.querySelector("#conditions");
-  description.innerHTML = response.data.condition.description;
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
   let windElement = document.querySelector("#windSpeed");
-  windElement.innerHTML = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector("#time");
-  dateElement.innerHTML = formatDate(response.data.time * 1000);
   let iconElement = document.querySelector("#image");
   let iconUrl = response.data.condition.icon_url;
+  cTemp = response.data.temperature.current;
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  cityElement.innerHTML = response.data.city;
+  description.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
   iconElement.setAttribute("src", iconUrl);
 }
 function searching(event) {
@@ -61,11 +61,18 @@ function returnCity(event) {
   navigator.geolocation.getCurrentPosition(logPosition);
 }
 function displayF(event) {
-  event.prevent.Default();
+  event.preventDefault();
   let fTemp = (cTemp * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#currentTemperature");
-  temperatureElement.innerHTML = fTemp;
+  temperatureElement.innerHTML = Math.round(fTemp);
 }
+function displayC(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#currentTemperature");
+  temperatureElement.innerHTML = Math.round(cTemp);
+}
+
+let cTemp = null;
 let search = document.querySelector("form");
 search.addEventListener("submit", searching);
 
@@ -76,4 +83,6 @@ navigator.geolocation.getCurrentPosition(logPosition);
 
 let fLink = document.querySelector("#fTemperature");
 fLink.addEventListener("click", displayF);
-let cTemp = response.data.temperature.current;
+
+let cLink = document.querySelector("#cTemperature");
+cLink.addEventListener("click", displayC);
