@@ -62,12 +62,17 @@ function returnCity(event) {
 }
 function displayF(event) {
   event.preventDefault();
+  cLink.classList.remove("active");
+  fLink.classList.add("active");
   let fTemp = (cTemp * 9) / 5 + 32;
+
   let temperatureElement = document.querySelector("#currentTemperature");
   temperatureElement.innerHTML = Math.round(fTemp);
 }
 function displayC(event) {
   event.preventDefault();
+  fLink.classList.remove("active");
+  cLink.classList.add("active");
   let temperatureElement = document.querySelector("#currentTemperature");
   temperatureElement.innerHTML = Math.round(cTemp);
 }
