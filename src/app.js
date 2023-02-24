@@ -77,6 +77,28 @@ function displayC(event) {
   temperatureElement.innerHTML = Math.round(cTemp);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+    <div class="weather-forecast-daily">${day}</div>
+      <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png" 
+      alt="clear night" 
+      width="40" 
+      />;
+      <div class="forecast-temps">
+        <span class="daily-high">25 °</span>
+        <span class="daily-low">2 °</span>
+      </div>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 let cTemp = null;
 let search = document.querySelector("form");
 search.addEventListener("submit", searching);
@@ -91,3 +113,5 @@ fLink.addEventListener("click", displayF);
 
 let cLink = document.querySelector("#cTemperature");
 cLink.addEventListener("click", displayC);
+
+displayForecast();

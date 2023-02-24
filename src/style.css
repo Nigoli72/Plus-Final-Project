@@ -82,3 +82,17 @@ button {
   cursor: default;
   font-weight: bolder;
 }
+.weather-forecast {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.weather-forecast-daily {
+  font-size: 24px;
+  font-weight: bold;
+}
+.forecast-temps {
+  font-size: 13px;
+}
+.daily-low {
+  opacity: 0.8;
+}
