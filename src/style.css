@@ -73,7 +73,7 @@ button {
 }
 .currentTemp .active {
   color: black;
-  font-weight: bold;
+  font-weight: bolder;
   cursor: default;
 }
 .currentTemp.active:hover {
