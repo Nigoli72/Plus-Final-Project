@@ -45,17 +45,12 @@ function displayWeather(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-axios.get(apiUrl).then(displayWeather);
-
 function displayWeatherForecast() {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = <div class="row">;
-  let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
-  let today = new Date().getDay();
 
-  days.forEach(function (day,index) {
-    let highTemp=(response.data.temperature);
-    let lowTemp=(response.data.temperature);
+  days.forEach (function (day) {
+    
     forecastHTML =
       forecastHTML +
       <div class="col-2">
@@ -64,8 +59,8 @@ function displayWeatherForecast() {
       alt="${icon}" 
       width="40" />;
       <div class="forecast-temps">
-        <span class="daily-high">${highTemp} °</span>
-        <span class="daily-low">${lowTemp} °</span>
+        <span class="daily-high">${dailyHigh} °</span>
+        <span class="daily-low">${dailyLow} °</span>
       </div>
     </div>;
     });
@@ -75,6 +70,7 @@ function displayWeatherForecast() {
 function getForecast(coordinates) {
   let lat = response.data.coordinates.latitude;
   let lon = response.data.coordinates.longitude;
+  let apiKey = "74ft7426o38737ab0c3021aae5a380df";
   let forecastUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
   axios.get(forecastUrl).then(displayWeatherForecast);
 }
@@ -82,14 +78,18 @@ function getForecast(coordinates) {
 dateElement.innerHTML = formatDate(response.data.time * 1000);
 iconElement.setAttribute("src", iconUrl);
 
-function displayWeatherForecast(response) {}
+function displayWeatherForecast(response) {
+  console.log(response);
+}
 function searching(event) {
   event.preventDefault();
   let city = document.querySelector(".city").value;
   searchCity(city);
 }
-import axios from "axios";
+
 function searchCity(city) {
+  let city=
+  
   let apiKey = "74ft7426o38737ab0c3021aae5a380df";
   let newUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(newUrl).then(displayWeather);
