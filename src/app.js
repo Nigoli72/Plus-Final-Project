@@ -48,11 +48,10 @@ function displayWeather(response) {
 function displayWeatherForecast() {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  days.forEach (function (day) {
-    
+  days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
-     `<div class="col-2">
+      `<div class="col-2">
     <div class="weather-forecast-daily">${day}</div>
       <img src= "https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}" 
       alt="${icon}" 
@@ -61,10 +60,10 @@ function displayWeatherForecast() {
         <span class="daily-high">${dailyHigh} °</span>
         <span class="daily-low">${dailyLow} °</span>
       </div>
-    </div>;
-    });
-  forecastHTML= forcastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML`;
+    </div>`;
+  });
+  forecastHTML = forcastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(coordinates) {
   let lat = response.data.coordinates.latitude;
