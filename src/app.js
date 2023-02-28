@@ -64,7 +64,7 @@ function displayWeatherForecast() {
     </div>;
     });
   forecastHTML= forcastHTML + `</div>`;
-  forecastElement.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML`;
 }
 function getForecast(coordinates) {
   let lat = response.data.coordinates.latitude;
