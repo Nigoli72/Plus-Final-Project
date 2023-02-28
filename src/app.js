@@ -48,32 +48,31 @@ function displayWeather(response) {
   iconElement.setAttribute("src", `${icon}`);
   getForecast(response.data.coordinates);
 }
-
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 function displayWeatherForecast(response) {
-  console.log(response.data.daily[0]);
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  console.log(response.data.daily);
+  let dailyForecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
-  days.forEach(function (day) {
+  dailyForecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `<div class="col-2">
-    <div class="weather-forecast-daily">${day}</div>
-      <img src= "https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}" 
-      alt="${icon}" 
-      width="40" />;
+    <div class="weather-forecast-daily">${formatDay(forecastDay.time)}</div>
+      <img src= "https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+        forecastDay.condition.icon_url
+      }"
+      alt="" 
+      width="40" />
       <div class="forecast-temps">
-        <span class="daily-high">${dailyHigh} °</span>
-        <span class="daily-low">${dailyLow} °</span>
+        <span class="daily-high">${forecastDay.temperature.maximum}</span>
+        <span class="daily-low"> ${forecastDay.temperature.minimum}</span>
       </div>
     </div>`;
   });
