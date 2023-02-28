@@ -33,8 +33,9 @@ function logPosition(position) {
 }
 function displayWeather(response) {
   console.log(response.data);
+  cTemp = response.data.temperature.current;
   let temperatureElement = document.querySelector("#currentTemperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  temperatureElement.innerHTML = Math.round(cTemp);
   let cityElement = document.querySelector("#currentCity");
   cityElement.innerHTML = response.data.city;
   let description = document.querySelector("#conditions");
@@ -91,8 +92,8 @@ function displayF(event) {
   event.preventDefault();
   cLink.classList.remove("active");
   fLink.classList.add("active");
-  let fTemp = (cTemp * 9) / 5 + 32;
 
+  let fTemp = (cTemp * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#currentTemperature");
   temperatureElement.innerHTML = Math.round(fTemp);
 }
@@ -103,10 +104,10 @@ function displayC(event) {
   let temperatureElement = document.querySelector("#currentTemperature");
   temperatureElement.innerHTML = Math.round(cTemp);
 }
-
 let cTemp = null;
-let search = document.querySelector("form");
-search.addEventListener("submit", searching);
+
+let searchElement = document.querySelector("form");
+searchElement.addEventListener("submit", searching);
 
 let cityReturn = document.querySelector("button");
 cityReturn.addEventListener("click", returnCity);
