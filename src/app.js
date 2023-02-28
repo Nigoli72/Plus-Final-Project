@@ -32,7 +32,6 @@ function logPosition(position) {
   axios.get(url).then(displayWeather);
 }
 function displayWeather(response) {
-  console.log(response.data);
   cTemp = response.data.temperature.current;
   let temperatureElement = document.querySelector("#currentTemperature");
   temperatureElement.innerHTML = Math.round(cTemp);
@@ -44,11 +43,26 @@ function displayWeather(response) {
   humidityElement.innerHTML = Math.round(response.data.temperature.humidity);
   let windElement = document.querySelector("#windSpeed");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  let icon = response.data.condition.icon_url;
+  let iconElement = document.querySelector("#image");
+  iconElement.setAttribute("src", `${icon}`);
+  getForecast(response.data.coordinates);
 }
 
-function displayWeatherForecast() {
+function displayWeatherForecast(response) {
+  console.log(response.data);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
+
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
@@ -63,14 +77,14 @@ function displayWeatherForecast() {
       </div>
     </div>`;
   });
-  forecastHTML = forcastHTML + `</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(coordinates) {
-  let lat = response.data.coordinates.latitude;
-  let lon = response.data.coordinates.longitude;
+  console.log(coordinates);
   let apiKey = "74ft7426o38737ab0c3021aae5a380df";
-  let forecastUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${apiKey}&units=metric`;
+  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+
   axios.get(forecastUrl).then(displayWeatherForecast);
 }
 function searching(event) {
