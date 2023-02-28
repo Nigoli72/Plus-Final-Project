@@ -50,7 +50,7 @@ function displayWeather(response) {
 }
 
 function displayWeatherForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily[0]);
   let days = [
     "Sunday",
     "Monday",
@@ -81,7 +81,6 @@ function displayWeatherForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "74ft7426o38737ab0c3021aae5a380df";
   let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
 
