@@ -1,5 +1,5 @@
 body {
-  max-width: 100%;
+  max-width: 92%;
   margin: 0 auto;
   background: radial-gradient(
     250px at 10.9% 48.6%,
@@ -54,7 +54,7 @@ button {
   text-align: center;
   padding: 0px;
   margin-left: -18px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .currentCity {
   font-size: 48px;
